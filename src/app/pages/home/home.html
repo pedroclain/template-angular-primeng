@@ -1,0 +1,12 @@
+<div class="container w-full bg-primary-50">
+  {{ control.value}}
+<form>
+  <app-input label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
+<app-input type="password" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
+<app-input type="decimal" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
+<app-input type="integer" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
+<app-input type="currency" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
+<app-button label="Click Me" (onClick)="click()" />
+</form>
+<app-table [columns]="columns" [rows]="rows"></app-table>
+</div>

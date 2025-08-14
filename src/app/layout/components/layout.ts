@@ -58,8 +58,6 @@ import { CommonModule } from '@angular/common';
           >
         </div>
       </div>
-      <router-outlet />
-
       <div class="layout-mask animate-fadein"></div>
     </div>
   `,
@@ -132,24 +130,28 @@ export class AppLayout {
   }
 
   blockBodyScroll(): void {
-    if (document && document.body.classList) {
-      document.body.classList.add('blocked-scroll');
-    } else {
-      document.body.className += ' blocked-scroll';
+    if (document) {
+      if (document.body.classList) {
+        document.body.classList.add('blocked-scroll');
+      } else {
+        document.body.className += ' blocked-scroll';
+      }
     }
   }
 
   unblockBodyScroll(): void {
-    if (document && document.body.classList) {
-      document.body.classList.remove('blocked-scroll');
-    } else {
-      document.body.className = document.body.className.replace(
-        new RegExp(
-          '(^|\\b)' + 'blocked-scroll'.split(' ').join('|') + '(\\b|$)',
-          'gi'
-        ),
-        ' '
-      );
+    if (document) {
+      if (document.body.classList) {
+        document.body.classList.remove('blocked-scroll');
+      } else {
+        document.body.className = document.body.className.replace(
+          new RegExp(
+            '(^|\\b)' + 'blocked-scroll'.split(' ').join('|') + '(\\b|$)',
+            'gi'
+          ),
+          ' '
+        );
+      }
     }
   }
 
