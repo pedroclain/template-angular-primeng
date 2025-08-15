@@ -44,7 +44,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
         (blur)="onTouched()"
         [invalid]="invalid()"
         [disabled]="disabled()"
-        [feedback]="true"
+        [feedback]="false"
         inputStyleClass="w-full"
         class="w-full"
       />

@@ -6,7 +6,15 @@
 <app-input type="decimal" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
 <app-input type="integer" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
 <app-input type="currency" label="Teste" [formControl]="control" [invalid]="control.invalid && control.touched"/>
-<app-button label="Click Me" (onClick)="click()" />
+<app-button label="Sucesso" (onClick)="clickSuccess()" />
+<app-button label="Erro" color="danger" (onClick)="clickFailure()" />
+<app-button label="Dialog" color="secondary" (onClick)="toggleDialog()" />
+<app-button icon="check" (onClick)="confirm($event)" />
+<app-popup/>
 </form>
 <app-table [columns]="columns" [rows]="rows"></app-table>
 </div>
+<app-dialog title="Teste" [(visible)]="visible">
+  <p>Conteúdo do diálogo</p>
+</app-dialog>
+<app-toast/>
