@@ -12,7 +12,7 @@
 <app-button icon="check" (onClick)="confirm($event)" />
 <app-popup/>
 </form>
-<app-table [columns]="columns" [rows]="rows"></app-table>
+<app-table [columns]="columns" [rows]="rows" [totalRecords]="allRows.length" (onPageChange)="pageChange($event)"></app-table>
 </div>
 <app-dialog title="Teste" [(visible)]="visible">
   <p>Conteúdo do diálogo</p>

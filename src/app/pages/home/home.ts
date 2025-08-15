@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Button } from '../../shared/components/button';
 import { Input } from '../../shared/components/input';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Table, TableColumn } from '../../shared/components/table';
+import { PageChangeEvent, Table, TableColumn } from '../../shared/components/table';
 import { Toast } from '../../shared/components/toast';
 import { ToastService } from '../../shared/services/toast';
 import { Dialog } from '../../shared/components/dialog';
@@ -22,20 +22,19 @@ export class Home {
 
   visible = false;
   control = new FormControl('', [Validators.required]);
-  rows = [
-    {
-      name: 'Pedro Xavier',
-      email: 'email@email.com',
-    },
-    {
-      name: 'Maria Silva',
-      email: 'm@email.com',
-    },
-  ];
   columns: TableColumn[] = [
     { field: 'name', header: 'Name' },
     { field: 'email', header: 'Email' },
   ];
+  allRows = [
+    { name: 'Pedro Xavier', email: 'pedro.xavier@email.com' },
+    { name: 'Maria Souza', email: 'maria.souza@email.com' },
+    { name: 'João Pereira', email: 'joao.pereira@email.com' },
+    { name: 'Ana Lima', email: 'ana.lima@email.com' },
+    { name: 'Carlos Santos', email: 'carlos.santos@email.com' },
+  ];
+
+  rows = this.allRows;
 
   clickSuccess() {
     this.toastService.showSuccess('Sucesso', this.control.value!);
@@ -51,7 +50,14 @@ export class Home {
 
   confirm(event: Event) {
     this.popupService.confirm(event, 'Você confirma essa ação?', () => {
-      this.toastService.showSuccess('Confirmado', 'Ação confirmada com sucesso!');
+      this.toastService.showSuccess(
+        'Confirmado',
+        'Ação confirmada com sucesso!'
+      );
     });
+  }
+
+  pageChange(event: PageChangeEvent) {
+    this.rows = this.allRows.slice(event.page, event.page + event.pageSize);
   }
 }
